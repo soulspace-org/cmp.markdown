@@ -97,7 +97,7 @@
 (defn code
   "Code."
   [s]
-  (apply str (map #(str "    " % "\n") (str/split #"(\r\n|\n|\r)" s))))
+  (apply str (map #(str "    " % "\n") (str/split s #"(\r\n|\n|\r)"))))
 
 (defn block-quote
   "Block quote."
