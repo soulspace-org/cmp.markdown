@@ -9,7 +9,6 @@
   :middleware [lein-tools-deps.plugin/resolve-dependencies-with-deps-edn]
   :lein-tools-deps/config {:config-files [:install :user :project]}
 
-;  :dependencies [[org.clojure/clojure "1.10.1"]]
 ;  :test-paths ["test"]
   :scm {:name "git" :url "https://github.com/soulspace-org/cmp.markdown"}
   :deploy-repositories [["clojars" {:sign-releases false :url "https://clojars.org/repo"}]])
