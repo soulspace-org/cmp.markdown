@@ -11,58 +11,63 @@
 ;;;;
 
 (ns org.soulspace.cmp.md.markdown-dsl
+  "Functions to generate standard and github flavored markdown."
   (:require [clojure.string :as str]))
 
 (def ^:private indent (atom 0))
 (defn- inc-indent [] (swap! indent inc))
 (defn- dec-indent [] (swap! indent dec))
 
+;;;
+;;; formatting for standard markdown
+;;;
+
 (defn markdown
   [& coll]
   (apply str coll))
 
 (defn h1
-  "First level heading."
+  "First level heading (standard markdown)."
   [s]
   (str s "\n" (apply str (repeat (count s) "=")) "\n"))
 
 (defn h2
-  "Second level heading."
+  "Second level heading (standard markdown)."
   [s]
   (str s "\n" (apply str (repeat (count s) "-")) "\n"))
 
 (defn h3
-  "Third level heading."
+  "Third level heading (standard markdown)."
   [s]
   (str "### " s))
 
 (defn h4
-  "Fourth level heading."
+  "Fourth level heading (standard markdown)."
   [s]
   (str "#### " s))
 
 (defn h5
-  "Fifth level heading."
+  "Fifth level heading (standard markdown)."
   [s]
   (str "##### " s))
 
 (defn h6
-  "Sixth level heading."
+  "Sixth level heading (standard markdown)."
   [s]
   (str "###### " s))
 
 (defn p
-  "Paragraph."
+  "Paragraph (standard markdown)."
   [& coll]
   (str (apply str coll) "\n\n"))
 
 (defn br
-  "Line break."
+  "Line break (standard markdown)."
   []
   "  ")
 
 (defn ul
-  "Unordered list"
+  "Unordered list (standard markdown)."
   [& coll]
   (inc-indent)
   (let [s (apply str (map #(str "* " % "\n") coll))]
@@ -70,7 +75,7 @@
     s))
 
 (defn ol
-  "Ordered list."
+  "Ordered list (standard markdown)."
   [& coll]
   (inc-indent)
   (let [s (apply str (map #(str %1 ". " %2 "\n") (iterate inc 1) coll))]
@@ -78,66 +83,82 @@
     s))
 
 (defn em
-  "Emphasis."
+  "Emphasis (standard markdown)."
   [s]
   (str "*" s "*"))
 
 (defn strong
-  "Strong emphasis."
+  "Strong emphasis (standard markdown)."
   [s]
   (str "**" s "**"))
 
 (defn very-strong
-  "Very strong emphasis."
+  "Very strong emphasis (standard markdown)."
   [s]
   (str "***" s "***"))
 
 (defn code-inline
-  "Code."
+  "Code inline (standard markdown)."
   [s]
   (str "`" s "`"))
 
 (defn code
-  "Code."
+  "Code (standard markdown)."
   [s]
   (apply str (map #(str "    " % "\n") (str/split s #"(\r\n|\n|\r)"))))
 
 (defn block-quote
-  "Block quote."
+  "Block quote (standard markdown)."
   [s]
   (str "> " s))
 
 (defn link
-  "Link."
+  "Link (standard markdown)."
   [& coll]
   (str "[" (first coll) "]" "(" (second coll) ")"))
 
 (defn link-id
-  "Link."
+  "Link (standard markdown)."
   [& coll]
   (str "[" (first coll) "]" "[" (second coll) "]"))
 
 (defn link-ref
-  "Link reference."
+  "Link reference (standard markdown)."
   [& coll]
   (str "[" (first coll) "]: " (second coll) (when (seq (nnext coll)) (str " \"" (nnext coll) "\""))))
 
 (defn image
-  "Image."
+  "Image (standard markdown)."
   [& coll]
   (str "![" (first coll) "]" "(" (second coll) ")"))
 
 (defn image-id
-  "Image."
+  "Image ID (standard markdown)."
   [& coll]
   (str "![" (first coll) "]" "[" (second coll) "]"))
 
 (defn image-ref
-  "Image reference."
+  "Image reference (standard markdown)."
   [& coll]
   (str "![" (first coll) "]: " (second coll) (when (seq (nnext coll)) (str " \"" (nnext coll) "\""))))
 
 (defn hr
-  "Horizontal ruler."
+  "Horizontal ruler (standard markdown)."
   []
   "------------------------------------------------------------------------")
+
+;;;
+;;; additional formatting for Github flavored markdown
+;;;
+
+(defn strike-through
+  "Strike through text (Github flavoured markdown)."
+  [s]
+  (str "~~" s "~~"))
+
+(defn fenced-code
+  "Fenced code (Github flavoured markdown)."
+  ([s]
+   (str "```\n" s "```\n"))
+  ([s lang]
+   (str "```" lang "\n" s "```\n")))

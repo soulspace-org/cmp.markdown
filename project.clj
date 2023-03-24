@@ -1,4 +1,4 @@
-(defproject org.soulspace.clj/cmp.markdown "0.4.1-SNAPSHOT"
+(defproject org.soulspace.clj/cmp.markdown "0.4.1"
   :description "The cmp.markdown library contains functions to generate markdown documents from Clojure"
   :url "https://github.com/lsolbach/CljComponents"
   :license {:name "Eclipse Public License"
