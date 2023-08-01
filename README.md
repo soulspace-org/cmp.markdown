@@ -7,8 +7,6 @@ Functions ar provided for standard markdown and Github flavoured markdown extens
 [![cljdoc badge](https://cljdoc.org/badge/org.soulspace.clj/cmp.markdown)](https://cljdoc.org/d/org.soulspace.clj/cmp.markdown)
 ![GitHub](https://img.shields.io/github/license/soulspace-org/cmp.markdown)
 
-
-
 Usage
 -----
 Include cmp.markdown as a dependency.
