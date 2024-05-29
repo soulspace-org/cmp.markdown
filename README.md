@@ -1,5 +1,5 @@
-cmp.markdown
-============
+# cmp.markdown
+
 The cmp.markdown library contains DSL functions to generate markdown documents with Clojure.
 Functions ar provided for standard markdown and Github flavoured markdown extensions.
 
@@ -7,8 +7,7 @@ Functions ar provided for standard markdown and Github flavoured markdown extens
 [![cljdoc badge](https://cljdoc.org/badge/org.soulspace.clj/cmp.markdown)](https://cljdoc.org/d/org.soulspace.clj/cmp.markdown)
 ![GitHub](https://img.shields.io/github/license/soulspace-org/cmp.markdown)
 
-Usage
------
+# Usage
 Include cmp.markdown as a dependency.
 
 Leiningen
@@ -17,8 +16,7 @@ Leiningen
 [org.soulspace.clj/cmp.markdown "0.4.1"]
 ```
 
-Example
--------
+# Example
 Example code to generate markdown
 
 ```

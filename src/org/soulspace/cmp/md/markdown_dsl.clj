@@ -9,7 +9,6 @@
 ;;;;
 ;;;;   You must not remove this notice, or any other, from this software.
 ;;;;
-
 (ns org.soulspace.cmp.md.markdown-dsl
   "Functions to generate standard and github flavored markdown."
   (:require [clojure.string :as str]))
@@ -21,20 +20,20 @@
 ;;;
 ;;; formatting for standard markdown
 ;;;
-
 (defn markdown
+  "Renders the markdown."
   [& coll]
   (apply str coll))
 
 (defn h1
   "First level heading (standard markdown)."
   [s]
-  (str s "\n" (apply str (repeat (count s) "=")) "\n"))
+  (str "# " s))
 
 (defn h2
   "Second level heading (standard markdown)."
   [s]
-  (str s "\n" (apply str (repeat (count s) "-")) "\n"))
+  (str "## " s))
 
 (defn h3
   "Third level heading (standard markdown)."
